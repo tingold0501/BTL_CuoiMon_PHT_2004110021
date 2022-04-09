@@ -4,6 +4,7 @@ public abstract class HangHoa {
     private int maH, sLTonKhoH;
     private String tenH;
     private double donGiaH;
+    private int autoMaH = 1;
     public HangHoa(){
 
     }
@@ -31,8 +32,8 @@ public abstract class HangHoa {
     private void setDonGiaH(double donGiaH) {
         this.donGiaH = donGiaH;
     }
-    public HangHoa(int maH, int sLTonKhoH, String tenH, double donGiaH) {
-        this.maH = maH;
+    public HangHoa(int sLTonKhoH, String tenH, double donGiaH) {
+        this.maH = autoMaH++;
         this.sLTonKhoH = sLTonKhoH;
         this.tenH = tenH;
         this.donGiaH = donGiaH;

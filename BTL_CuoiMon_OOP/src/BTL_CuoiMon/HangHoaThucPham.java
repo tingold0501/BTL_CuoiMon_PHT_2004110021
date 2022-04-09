@@ -31,8 +31,8 @@ public class HangHoaThucPham extends HangHoa {
         this.ngayHHH = ngayHHH;
         this.nhaCC = nhaCC;
     }
-    public HangHoaThucPham(int maH, int sLTonKhoH, String tenH, double donGiaH, Date ngaySXH, Date ngayHHH, String nhaCC) {
-        super(maH, sLTonKhoH, tenH, donGiaH);
+    public HangHoaThucPham(int sLTonKhoH, String tenH, double donGiaH, Date ngaySXH, Date ngayHHH, String nhaCC) {
+        super(sLTonKhoH, tenH, donGiaH);
         this.ngaySXH = ngaySXH;
         this.ngayHHH = ngayHHH;
         this.nhaCC = nhaCC;

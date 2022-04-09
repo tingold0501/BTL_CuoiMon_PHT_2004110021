@@ -1,6 +1,6 @@
 package BTL_CuoiMon;
 
-public class HangHoaDienMay extends HangHoa {
+public class HangHoaDienMay extends HangHoa implements InterfaceHangHoa{
     private int thoiGianBH;
     private double congXuat;
     public HangHoaDienMay(){
@@ -22,13 +22,53 @@ public class HangHoaDienMay extends HangHoa {
         this.thoiGianBH = thoiGianBH;
         this.congXuat = congXuat;
     }
-    public HangHoaDienMay(int maH, int sLTonKhoH, String tenH, double donGiaH, int thoiGianBH, double congXuat) {
-        super(maH, sLTonKhoH, tenH, donGiaH);
+    public HangHoaDienMay(int sLTonKhoH, String tenH, double donGiaH, int thoiGianBH, double congXuat) {
+        super( sLTonKhoH, tenH, donGiaH);
         this.thoiGianBH = thoiGianBH;
         this.congXuat = congXuat;
     }
     @Override
     public String toString() {
         return super.toString() + "Thời Gian Bảo Hành = " + this.getThoiGianBH()+ "Công Xuất = " + this.getCongXuat();
+    }
+    @Override
+    public void showHangHoa() {
+        // TODO Auto-generated method stub
+        
+    }
+    @Override
+    public void showHangHoaSanhSu() {
+        // TODO Auto-generated method stub
+        
+    }
+    @Override
+    public void showHangHoaDienMay() {
+        // TODO Auto-generated method stub
+        
+    }
+    @Override
+    public void showHangHoaThucPham() {
+        // TODO Auto-generated method stub
+        
+    }
+    @Override
+    public void inputHangHoa() {
+        // TODO Auto-generated method stub
+        
+    }
+    @Override
+    public void inputHangHoaDienMay() {
+        // TODO Auto-generated method stub
+        
+    }
+    @Override
+    public void inputHangHoaSanhSu() {
+        // TODO Auto-generated method stub
+        
+    }
+    @Override
+    public void inputHangHoaThucPham() {
+        // TODO Auto-generated method stub
+        
     }
 }

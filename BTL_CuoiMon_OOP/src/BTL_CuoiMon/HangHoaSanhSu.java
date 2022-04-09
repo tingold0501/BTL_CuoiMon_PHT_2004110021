@@ -24,8 +24,8 @@ public class HangHoaSanhSu extends HangHoa {
         this.nhaSX = nhaSX;
         this.ngayNhapKho = ngayNhapKho;
     }
-    public HangHoaSanhSu(int maH, int sLTonKhoH, String tenH, double donGiaH, String nhaSX, Date ngayNhapKho) {
-        super(maH, sLTonKhoH, tenH, donGiaH);
+    public HangHoaSanhSu(int sLTonKhoH, String tenH, double donGiaH, String nhaSX, Date ngayNhapKho) {
+        super(sLTonKhoH, tenH, donGiaH);
         this.nhaSX = nhaSX;
         this.ngayNhapKho = ngayNhapKho;
     }
