@@ -5,9 +5,4 @@ public interface InterfaceHangHoa {
     void showHangHoaSanhSu();
     void showHangHoaDienMay();
     void showHangHoaThucPham();
-    void inputHangHoa();
-    void inputHangHoaDienMay();
-    void inputHangHoaSanhSu();
-    void inputHangHoaThucPham();
-
 }

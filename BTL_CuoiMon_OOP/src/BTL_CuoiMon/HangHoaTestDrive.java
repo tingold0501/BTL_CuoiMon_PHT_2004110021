@@ -6,6 +6,5 @@ public class HangHoaTestDrive {
         DanhSachHangHoa danhSachHangHoa = new DanhSachHangHoa();
         controllerHangHoa.menuHangHoa();
         danhSachHangHoa.hienThiHangHoa();
-        
     }
 }

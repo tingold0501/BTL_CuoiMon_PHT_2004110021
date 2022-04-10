@@ -51,24 +51,5 @@ public class HangHoaDienMay extends HangHoa implements InterfaceHangHoa{
         // TODO Auto-generated method stub
         
     }
-    @Override
-    public void inputHangHoa() {
-        // TODO Auto-generated method stub
-        
-    }
-    @Override
-    public void inputHangHoaDienMay() {
-        // TODO Auto-generated method stub
-        
-    }
-    @Override
-    public void inputHangHoaSanhSu() {
-        // TODO Auto-generated method stub
-        
-    }
-    @Override
-    public void inputHangHoaThucPham() {
-        // TODO Auto-generated method stub
-        
-    }
+  
 }
