@@ -4,12 +4,12 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class ControllerHangHoa {
-    private Scanner sc = new Scanner(System.in);
+    public Scanner sc = new Scanner(System.in);
     private DanhSachHangHoa danhSachHangHoa = new DanhSachHangHoa();
     private String yn = null;
 
     // Hàm nhập cho Hàng Hoá
-    private HangHoa inputHangHoa(){
+    public HangHoa inputHangHoa(){
         HangHoa hangHoa = null;
         System.out.println("Nhập Tên Hàng Hoá: ");
         String tenHH = sc.nextLine();
