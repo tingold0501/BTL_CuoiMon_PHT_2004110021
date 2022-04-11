@@ -65,6 +65,11 @@ public class DanhSachHangHoa {
     public void themHangHoa(HangHoa hangHoa){
         lHoas.add(hangHoa);
     }
+    public void themHangHoas(HangHoa hangHoa){
+        while(true){
+            this.themHangHoa(hangHoa);
+        }
+    }
     public void hienThiHangHoa(){
         for (HangHoa hangHoa : lHoas) {
             System.out.println(hangHoa);

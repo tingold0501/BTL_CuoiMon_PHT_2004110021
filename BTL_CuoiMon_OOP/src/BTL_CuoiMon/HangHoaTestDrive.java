@@ -2,6 +2,7 @@ package BTL_CuoiMon;
 
 public class HangHoaTestDrive {
     public static void main(String[] args) {
+        FileWriter.write("Data Chuong Trinh", "Hello");
         ControllerHangHoa controllerHangHoa = new ControllerHangHoa();
         DanhSachHangHoa danhSachHangHoa = new DanhSachHangHoa();
         String luaChon = null;

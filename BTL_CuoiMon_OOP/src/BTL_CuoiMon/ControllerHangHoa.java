@@ -1,13 +1,15 @@
 package BTL_CuoiMon;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
 public class ControllerHangHoa {
     public Scanner sc = new Scanner(System.in);
     private DanhSachHangHoa danhSachHangHoa = new DanhSachHangHoa();
-    private String yn = null;
-
+    private String yn = null, nhaCC;
+    private Date ngaySX , ngayHH, ngayNK;
+    private SimpleDateFormat sFormat = new SimpleDateFormat("dd/MM/yyyy");
     // Hàm nhập cho Hàng Hoá
     public HangHoa inputHangHoa(){
         HangHoa hangHoa = null;
@@ -32,22 +34,33 @@ public class ControllerHangHoa {
                 case 2:
                 // Thực hiện chức năng nhập Hàng Hoá Thực Phẩm
                 System.out.println("===Bạn Đang Chọn Chức Năng Cho Thực Phẩm===");
-                System.out.println("Nhập Ngày Sản Xuất Cho Hàng Hoá Trên:");
                 // Xử lý ngày sản xuất
-                System.out.println("Nhập Ngày Hết Hạn Cho Hàng Hoá Trên:");
-                // Xử lý ngày hết hạn
-                System.out.println("Nhập Nhà Cung Cấp Cho Hàng Hoá Trên:");
-                String nhaCC = sc.nextLine();
-                hangHoa = new HangHoaThucPham(sLTKHH, tenHH, donGiaHH, new Date(), new Date(), nhaCC);
+                try {
+                    System.out.println("Nhập Ngày Sản Xuất Cho Hàng Hoá Trên: [dd/MM/yyyy]");
+                    ngaySX = sFormat.parse(sc.nextLine());
+                    System.out.println("Nhập Ngày Hết Hạn Cho Hàng Hoá Trên:[dd/MM/yyyy]");
+                    ngayHH = sFormat.parse(sc.nextLine());
+                    System.out.println("Nhập Nhà Cung Cấp Cho Hàng Hoá Trên:");
+                    nhaCC = sc.nextLine();
+                } catch (Exception e) {
+                    System.out.println("Dữ Liệu Nhập Không Hợp Lệ!!");
+                }
+                hangHoa = new HangHoaThucPham(sLTKHH, tenHH, donGiaHH, ngaySX , ngayHH, nhaCC);
                 break;
                 case 3:
                 // Thực hiện chức năng nhập Hàng Hoá Sành Sứ
                 System.out.println("===Bạn Đang Chọn Nhập Cho Sành Sứ===");
                 System.out.println("Nhập Nhà Sản Xuất Cho Hàng Hoá Trên: ");
                 String nhaSXHH = sc.nextLine();
-                System.out.println("Nhập Ngày Nhập Kho Cho Hàng Hoá Trên:");
+                
                 // Xử lý ngày nhập kho
-                hangHoa = new HangHoaSanhSu(sLTKHH, tenHH, donGiaHH, nhaSXHH, new Date());
+                try {
+                    System.out.println("Nhập Ngày Nhập Kho Cho Hàng Hoá Trên:");
+                    ngayNK = sFormat.parse(sc.nextLine());
+                } catch (Exception e) {
+                    System.out.println("Dữ Liệu Không Hợp Lệ!!!");
+                }
+                hangHoa = new HangHoaSanhSu(sLTKHH, tenHH, donGiaHH, nhaSXHH, ngayNK);
                 break;
                 default: System.out.println("Lựa Chọn Không Hợp Lệ!!!");
             }

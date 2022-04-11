@@ -4,7 +4,7 @@ public abstract class HangHoa {
     private int maH, sLTonKhoH;
     private String tenH;
     private double donGiaH;
-    private static int autoMaH = 0;
+    private static int autoMaH = 1;
     public HangHoa(){
 
     }

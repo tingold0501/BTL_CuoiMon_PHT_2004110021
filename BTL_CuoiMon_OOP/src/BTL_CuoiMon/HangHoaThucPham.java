@@ -40,6 +40,6 @@ public class HangHoaThucPham extends HangHoa {
     @Override
     public String toString() {
         
-        return super.toString() + "Ngày Hết Hạn = " + this.getNgayHHH() + "Ngày Sản Xuất = " + this.getNgaySXH() + "Nhà Cung Cấp = " + this.getNhaCC();
+        return super.toString() + "Ngày Hết Hạn = " + this.getNgayHHH() + "Ngày Sản Xuất = " + this.getNgaySXH() + " Nhà Cung Cấp = " + this.getNhaCC();
     }
 }
