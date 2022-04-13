@@ -1,4 +1,4 @@
-package BTL_CuoiMon;
+
 
 public interface InterfaceHangHoa {
     void showHangHoa();

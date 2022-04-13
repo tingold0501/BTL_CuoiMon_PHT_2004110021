@@ -1,4 +1,4 @@
-package BTL_CuoiMon;
+
 
 public abstract class HangHoa {
     private int maH, sLTonKhoH;

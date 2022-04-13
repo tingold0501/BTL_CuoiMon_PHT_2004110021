@@ -1,4 +1,4 @@
-package BTL_CuoiMon;
+
 
 public class HangHoaDienMay extends HangHoa implements InterfaceHangHoa{
     private int thoiGianBH;
