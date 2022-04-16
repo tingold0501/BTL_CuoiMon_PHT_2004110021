@@ -17,10 +17,10 @@ public class HangHoaTestDrive {
         // }while(luaChon.equals("Y") || luaChon.equals("y"));
         // danhSachHangHoa.hienThiHangHoa();
 
+        // String c = "C:/Windows/System32/calc.exe";
+        // Runtime env = Runtime.getRuntime();
+        // env.exec(c);
 
-        String c = "C:/Windows/System32/calc.exe";
-        Runtime env = Runtime.getRuntime();
-        env.exec(c);
 
     }
 }

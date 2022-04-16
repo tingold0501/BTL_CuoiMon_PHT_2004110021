@@ -2,13 +2,15 @@
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class DanhSachHangHoa {
     private List<HangHoa> lHoas = new ArrayList<>();
     private int sLHHDienMay;
     private int sLHHSanhSu;
     private int sLHHThucPham;
-
+    private String yn;
+    private Scanner sc = new Scanner(System.in);
     public DanhSachHangHoa() {
 
     }
@@ -66,7 +68,9 @@ public class DanhSachHangHoa {
         lHoas.add(hangHoa);
     }
     public void themHangHoas(HangHoa hangHoa){
-        while(true){
+        System.out.println("Nhập Tiếp Không [Y/N]");
+        yn = sc.nextLine();
+        while(yn.equals("Y") || yn.equals("y")){
             this.themHangHoa(hangHoa);
         }
     }
