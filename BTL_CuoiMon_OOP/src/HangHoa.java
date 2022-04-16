@@ -12,25 +12,46 @@ public abstract class HangHoa {
         return maH;
     }
     private void setMaH(int maH) {
-        this.maH = maH;
+        if(maH > 0){
+            this.maH = maH;
+        }
+        else{
+            System.out.println("Mã Đang Rổng Vui Lòng Thử Lại");
+        }
+        
     }
     public int getsLTonKhoH() {
         return sLTonKhoH;
     }
     private void setsLTonKhoH(int sLTonKhoH) {
-        this.sLTonKhoH = sLTonKhoH;
+        if(sLTonKhoH > 0){
+            this.sLTonKhoH = sLTonKhoH;
+        }
+        else{
+            System.out.println("Số Lượng Tồn Kho Không Hợp Lệ");
+        }
     }
     public String getTenH() {
         return tenH;
     }
     private void setTenH(String tenH) {
-        this.tenH = tenH;
+        if(tenH != null){
+            this.tenH = tenH;
+        }
+        else{
+            System.out.println("Tên Hàng Đang Rỗng Vui Lòng Thử Lại");
+        }
     }
     public double getDonGiaH() {
         return donGiaH;
     }
     private void setDonGiaH(double donGiaH) {
-        this.donGiaH = donGiaH;
+        if(donGiaH > 0 ){
+            this.donGiaH = donGiaH;
+        }
+        else{
+            System.out.println("Đơn Giá Không Hợp Lê!!");
+        }
     }
     public HangHoa(int sLTonKhoH, String tenH, double donGiaH) {
         this.maH = autoMaH++;

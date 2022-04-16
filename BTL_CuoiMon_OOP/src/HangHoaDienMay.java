@@ -9,14 +9,24 @@ public class HangHoaDienMay extends HangHoa implements InterfaceHangHoa{
     public int getThoiGianBH() {
         return thoiGianBH;
     }
-    public void setThoiGianBH(int thoiGianBH) {
-        this.thoiGianBH = thoiGianBH;
+    private void setThoiGianBH(int thoiGianBH) {
+        if(thoiGianBH > 0){
+            this.thoiGianBH = thoiGianBH;
+        }
+        else{
+            System.out.println("Thời Gian Bản Hành Không Hợp Lệ!!");
+        }
     }
     public double getCongXuat() {
         return congXuat;
     }
-    public void setCongXuat(double congXuat) {
-        this.congXuat = congXuat;
+    private void setCongXuat(double congXuat) {
+        if(congXuat > 0){
+            this.congXuat = congXuat;
+        }
+        else{
+            System.out.println("Công Xuất Không Hợp Lệ!!!");
+        }
     }
     public HangHoaDienMay(int thoiGianBH, double congXuat) {
         this.thoiGianBH = thoiGianBH;

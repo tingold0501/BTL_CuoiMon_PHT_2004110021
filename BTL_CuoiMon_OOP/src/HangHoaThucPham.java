@@ -11,20 +11,35 @@ public class HangHoaThucPham extends HangHoa {
     public Date getNgaySXH() {
         return ngaySXH;
     }
-    public void setNgaySXH(Date ngaySXH) {
-        this.ngaySXH = ngaySXH;
+    private void setNgaySXH(Date ngaySXH) {
+        if(ngaySXH.before(this.ngayHHH)){
+            this.ngaySXH = ngaySXH;
+        }
+        else{
+            System.out.println("Ngày Sản Xuất Phải Trước Ngày Hết Hạn!!!");
+        }
     }
     public Date getNgayHHH() {
         return ngayHHH;
     }
-    public void setNgayHHH(Date ngayHHH) {
-        this.ngayHHH = ngayHHH;
+    private void setNgayHHH(Date ngayHHH) {
+        if(ngayHHH.after(this.ngaySXH)){
+            this.ngayHHH = ngayHHH;
+        }
+        else{
+            System.out.println("Ngày Hết Hạn Phải Sau Ngày Sản Xuất");
+        }
     }
     public String getNhaCC() {
         return nhaCC;
     }
-    public void setNhaCC(String nhaCC) {
-        this.nhaCC = nhaCC;
+    private void setNhaCC(String nhaCC) {
+        if(nhaCC != null && nhaCC != ""){
+            this.nhaCC = nhaCC;
+        }
+        else{
+            System.out.println("Nhà Cung Cấp Không Được Rỗng");
+        }
     }
     public HangHoaThucPham(Date ngaySXH, Date ngayHHH, String nhaCC) {
         this.ngaySXH = ngaySXH;
