@@ -39,7 +39,8 @@ public class HangHoaSanhSu extends HangHoa {
         return super.toString()+ "Nhà Sản Xuất = " + this.getNhaSX() + "Ngày Sản Xuất = " + this.getNgayNhapKho();
     }
     @Override
-    public void VAT() {
+    public double VAT() {
+        
         HangHoa hangHoa = new HangHoaSanhSu();
         double VAT = hangHoa.getDonGiaH() * 0.1;
         System.out.println("Phi VAT = " + VAT);
