@@ -8,7 +8,7 @@ public abstract class HangHoa {
     public HangHoa(){
 
     }
-    public abstract void VAT();
+    
     public int getMaH() {
         return maH;
     }

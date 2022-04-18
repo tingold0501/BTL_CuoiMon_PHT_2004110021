@@ -21,7 +21,7 @@ public class HangHoaTestDrive {
         // Runtime env = Runtime.getRuntime();
         // env.exec(c);
             HangHoa hangHoa = new HangHoaSanhSu();
-            hangHoa.VAT();
+           
 
     }
 }
