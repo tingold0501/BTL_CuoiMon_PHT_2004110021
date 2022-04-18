@@ -20,7 +20,8 @@ public class HangHoaTestDrive {
         // String c = "C:/Windows/System32/calc.exe";
         // Runtime env = Runtime.getRuntime();
         // env.exec(c);
-
+            HangHoa hangHoa = new HangHoaSanhSu();
+            hangHoa.VAT();
 
     }
 }

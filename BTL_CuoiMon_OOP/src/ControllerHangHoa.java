@@ -34,7 +34,6 @@ public class ControllerHangHoa {
                 case 2:
                 // Thực hiện chức năng nhập Hàng Hoá Thực Phẩm
                 System.out.println("===Bạn Đang Chọn Chức Năng Cho Thực Phẩm===");
-                // Xử lý ngày sản xuất
                 try {
                     System.out.println("Nhập Ngày Sản Xuất Cho Hàng Hoá Trên: [dd/MM/yyyy]");
                     ngaySX = sFormat.parse(sc.nextLine());
@@ -52,8 +51,6 @@ public class ControllerHangHoa {
                 System.out.println("===Bạn Đang Chọn Nhập Cho Sành Sứ===");
                 System.out.println("Nhập Nhà Sản Xuất Cho Hàng Hoá Trên: ");
                 String nhaSXHH = sc.nextLine();
-                
-                // Xử lý ngày nhập kho
                 try {
                     System.out.println("Nhập Ngày Nhập Kho Cho Hàng Hoá Trên:");
                     ngayNK = sFormat.parse(sc.nextLine());

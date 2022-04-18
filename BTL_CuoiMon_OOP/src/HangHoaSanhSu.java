@@ -18,7 +18,12 @@ public class HangHoaSanhSu extends HangHoa {
         return ngayNhapKho;
     }
     public void setNgayNhapKho(Date ngayNhapKho) {
-        this.ngayNhapKho = ngayNhapKho;
+        if(ngayNhapKho != null){
+            this.ngayNhapKho = ngayNhapKho;
+        }
+        else{
+            System.out.println("Ngày Không Được Rỗng");
+        }
     }
     public HangHoaSanhSu(String nhaSX, Date ngayNhapKho) {
         this.nhaSX = nhaSX;
@@ -33,5 +38,10 @@ public class HangHoaSanhSu extends HangHoa {
     public String toString() {
         return super.toString()+ "Nhà Sản Xuất = " + this.getNhaSX() + "Ngày Sản Xuất = " + this.getNgayNhapKho();
     }
-    
+    @Override
+    public void VAT() {
+        HangHoa hangHoa = new HangHoaSanhSu();
+        double VAT = hangHoa.getDonGiaH() * 0.1;
+        System.out.println("Phi VAT = " + VAT);
+    }
 }
