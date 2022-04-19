@@ -36,7 +36,7 @@ public class HangHoaSanhSu extends HangHoa {
     }
     @Override
     public String toString() {
-        return super.toString()+ "Nhà Sản Xuất = " + this.getNhaSX() + "Ngày Sản Xuất = " + this.getNgayNhapKho();
+        return super.toString()+ "=========================Thông Tin Hàng Hoá Sành Sứ\n"+"Nhà Sản Xuất = " + this.getNhaSX() + "Ngày Sản Xuất = " + this.getNgayNhapKho();
     }
    
 }

@@ -11,7 +11,19 @@ public class ControllerHangHoa {
     private Date ngaySX , ngayHH, ngayNK;
     private SimpleDateFormat sFormat = new SimpleDateFormat("dd/MM/yyyy");
     // Hàm nhập cho Hàng Hoá
-    public HangHoa inputHangHoa(){
+    public void tiepTuc(){
+        ControllerHangHoa controllerHangHoa = new ControllerHangHoa();
+        DanhSachHangHoa danhSachHangHoa = new DanhSachHangHoa();
+        String luaChon = null;
+        do{
+            HangHoa hangHoa = controllerHangHoa.nhapHangHoa();
+            danhSachHangHoa.themHangHoa(hangHoa);
+            System.out.println("Nhập Tiếp Không [Y/N]");
+            controllerHangHoa.sc.nextLine();
+            luaChon = controllerHangHoa.sc.nextLine();
+        }while(luaChon.equals("Y") || luaChon.equals("y"));
+    }
+    public HangHoa nhapHangHoa(){
         HangHoa hangHoa = null;
         System.out.println("Nhập Tên Hàng Hoá: ");
         String tenHH = sc.nextLine();
@@ -83,7 +95,7 @@ public class ControllerHangHoa {
                 break;
                 case 1:
                 System.out.println("===Bạn Đã Chọn Chức Năng Nhập Thêm Hàng Hoá===");
-                this.inputHangHoa();
+                this.nhapHangHoa();
                 break;
                 case 2:
                 System.out.println("===Bạn Đã Chọn Chức Năng Xoá Hàng Hoá===");
@@ -107,7 +119,7 @@ public class ControllerHangHoa {
                 break;
                 case 7:
                 System.out.println("===Bạn Đã Chọn Chức Năng Hiển Thị Hàng Hoá===");
-                System.out.println(danhSachHangHoa);
+                danhSachHangHoa.hienThiHangHoa();
                 break;
                 default: System.out.println("Lựa Chọn Không Hợp Lệ!!!");
                 break;

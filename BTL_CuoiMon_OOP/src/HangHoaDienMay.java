@@ -39,27 +39,13 @@ public class HangHoaDienMay extends HangHoa implements InterfaceHangHoa{
     }
     @Override
     public String toString() {
-        return super.toString() + "Thời Gian Bảo Hành = " + this.getThoiGianBH()+ "Công Xuất = " + this.getCongXuat();
+        return super.toString()+"================Thông Tin Hàng Hoá Điện Máy\n" + "Thời Gian Bảo Hành = " + this.getThoiGianBH()+ "Công Xuất = " + this.getCongXuat();
     }
     @Override
     public void showHangHoa() {
         // TODO Auto-generated method stub
         
     }
-    @Override
-    public void showHangHoaSanhSu() {
-        // TODO Auto-generated method stub
-        
-    }
-    @Override
-    public void showHangHoaDienMay() {
-        // TODO Auto-generated method stub
-        
-    }
-    @Override
-    public void showHangHoaThucPham() {
-        // TODO Auto-generated method stub
-        
-    }
+  
  
 }

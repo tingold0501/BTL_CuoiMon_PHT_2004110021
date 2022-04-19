@@ -7,20 +7,17 @@ public class HangHoaTestDrive {
         // FileWriter.write("Data Chuong Trinh", "Hello");
         ControllerHangHoa controllerHangHoa = new ControllerHangHoa();
         DanhSachHangHoa danhSachHangHoa = new DanhSachHangHoa();
-        String luaChon = null;
-        do{
-            HangHoa hangHoa = controllerHangHoa.inputHangHoa();
-            danhSachHangHoa.themHangHoa(hangHoa);
-            System.out.println("Nhập Tiếp Không [Y/N]");
-            controllerHangHoa.sc.nextLine();
-            luaChon = controllerHangHoa.sc.nextLine();
-        }while(luaChon.equals("Y") || luaChon.equals("y"));
-        danhSachHangHoa.hienThiHangHoa();
+        HangHoa hangHoa = new HangHoaSanhSu();
+        DataFile fileWriter = new DataFile();
+        fileWriter.createFile();
+        fileWriter.writeFile();
+        fileWriter.readData();
+        // controllerHangHoa.menuHangHoa();
 
         // String c = "C:/Windows/System32/calc.exe";
         // Runtime env = Runtime.getRuntime();
         // env.exec(c);
-            HangHoa hangHoa = new HangHoaSanhSu();
+        
            
 
     }

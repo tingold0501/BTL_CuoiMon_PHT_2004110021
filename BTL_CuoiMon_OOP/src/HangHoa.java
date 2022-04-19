@@ -62,9 +62,9 @@ public abstract class HangHoa {
     }
     @Override
     public String toString() {
-        return "Quản Lý Hàng Hoá [Đơn Giá Hàng Hoá = " + donGiaH + 
+        return "Quản Lý Hàng Hoá \n[Đơn Giá Hàng Hoá = " + donGiaH + 
         ", Mã Hàng Hoá = " + maH + 
         ", Số Lượng Tồn Kho = " + sLTonKhoH + 
-        ", Tên Hàng Hoá = " + tenH + "]";
+        ", Tên Hàng Hoá = " + tenH + "]\n";
     }
 }

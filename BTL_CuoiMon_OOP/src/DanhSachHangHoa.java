@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class DanhSachHangHoa {
+public class DanhSachHangHoa implements InterfaceHangHoa {
     private List<HangHoa> lHoas = new ArrayList<>();
     private int sLHHDienMay;
     private int sLHHSanhSu;
@@ -79,4 +79,11 @@ public class DanhSachHangHoa {
             System.out.println(hangHoa);
         }
     }
+    
+    @Override
+    public void showHangHoa() {
+        
+    }
+
+   
 }
