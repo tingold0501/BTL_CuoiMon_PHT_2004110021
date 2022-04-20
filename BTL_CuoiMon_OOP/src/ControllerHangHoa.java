@@ -160,8 +160,8 @@ public class ControllerHangHoa {
                 case 8:
                 System.out.println("Nhập Mã Muốn Tìm: ");
                 int maTK = sc.nextInt();
+                sc.nextLine();
                 danhSachHangHoa.timHangHoaTheoMa(maTK);
-                danhSachHangHoa.hienThiHangHoa();
                 break;
                 default: System.out.println("Lựa Chọn Không Hợp Lệ!!!");
                 break;

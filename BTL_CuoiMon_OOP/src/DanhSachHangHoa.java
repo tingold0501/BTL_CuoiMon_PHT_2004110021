@@ -45,7 +45,7 @@ public class DanhSachHangHoa implements InterfaceHangHoa {
         this.sLHHThucPham = sLHHThucPham;
     }
 
-    public void xoaHangHoa(HangHoa hangHoa) {
+    private void xoaHangHoa(HangHoa hangHoa) {
         this.lHoas.remove(hangHoa);
     }
 
@@ -55,7 +55,7 @@ public class DanhSachHangHoa implements InterfaceHangHoa {
     public void suaHH(int idSua){
        
     }
-    public int timViTri(HangHoa hangHoa){
+    private int timViTri(HangHoa hangHoa){
         int viTri = -1;
         viTri = this.lHoas.indexOf(viTri);
         return viTri;
@@ -65,6 +65,9 @@ public class DanhSachHangHoa implements InterfaceHangHoa {
         for (HangHoa hangHoa : lHoas) {
             if(hangHoa.getMaH() == maHH){
                 hangHoa1 = hangHoa;
+            }
+            else{
+                System.out.println("Mã Không Tồn Tại");
             }
         }
         return hangHoa1;
