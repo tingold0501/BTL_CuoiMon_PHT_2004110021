@@ -12,7 +12,8 @@ public class DataFile {
             if(dataFile.createNewFile()){
                 System.out.println("File Đã Được Tạo Thành Công!!!");
             }
-            else{
+            else
+            {
                 System.out.println("File Không Được Tạo Thành Công!!!");
             }
         } catch (IOException e) {
