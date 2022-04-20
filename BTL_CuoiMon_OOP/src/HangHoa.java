@@ -8,7 +8,7 @@ public abstract class HangHoa {
     public HangHoa(){
 
     }
-    
+    public abstract double VAT(); // Xử Lý Interface cho 3 lớp con
     public int getMaH() {
         return maH;
     }
@@ -51,7 +51,7 @@ public abstract class HangHoa {
             this.donGiaH = donGiaH;
         }
         else{
-            System.out.println("Đơn Giá Không Hợp Lê!!");
+            System.out.println("Đơn Giá Không Hợp Lệ!!");
         }
     }
     public HangHoa(int sLTonKhoH, String tenH, double donGiaH) {
@@ -62,7 +62,7 @@ public abstract class HangHoa {
     }
     @Override
     public String toString() {
-        return "Quản Lý Hàng Hoá \n[Đơn Giá Hàng Hoá = " + donGiaH + 
+        return "Quản Lý Hàng Hoá [Đơn Giá Hàng Hoá = " + donGiaH + 
         ", Mã Hàng Hoá = " + maH + 
         ", Số Lượng Tồn Kho = " + sLTonKhoH + 
         ", Tên Hàng Hoá = " + tenH + "]\n";

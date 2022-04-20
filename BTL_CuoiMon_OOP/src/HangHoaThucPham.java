@@ -53,8 +53,15 @@ public class HangHoaThucPham extends HangHoa {
         this.nhaCC = nhaCC;
     }
     @Override
+    public double VAT() {
+        double thueVat = 0;
+        thueVat = this.getDonGiaH() * 0.05;
+        return thueVat;
+    }
+    @Override
     public String toString() {
         
-        return super.toString()+"====================Thông Tin Hàng Hoá Thực Phẩm\n" + "Ngày Hết Hạn = " + this.getNgayHHH() + "Ngày Sản Xuất = " + this.getNgaySXH() + " Nhà Cung Cấp = " + this.getNhaCC();
+        return super.toString()+"====================Thông Tin Hàng Hoá Thực Phẩm\n" + "Ngày Hết Hạn = " + this.getNgayHHH() + "Ngày Sản Xuất = " + this.getNgaySXH() + " Nhà Cung Cấp = " + this.getNhaCC()+ "Thuế VAT Thực Phẩm = " + this.VAT();
     }
+   
 }

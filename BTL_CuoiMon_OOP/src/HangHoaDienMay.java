@@ -38,14 +38,21 @@ public class HangHoaDienMay extends HangHoa implements InterfaceHangHoa{
         this.congXuat = congXuat;
     }
     @Override
+    public double VAT() {
+        double thueVat = 0;
+        thueVat = this.getDonGiaH() * 0.1;
+        return thueVat;
+    }
+    @Override
     public String toString() {
-        return super.toString()+"================Thông Tin Hàng Hoá Điện Máy\n" + "Thời Gian Bảo Hành = " + this.getThoiGianBH()+ "Công Xuất = " + this.getCongXuat();
+        return super.toString()+"================Thông Tin Hàng Hoá Điện Máy\n" + "Thời Gian Bảo Hành = " + this.getThoiGianBH()+ "Công Xuất = " + this.getCongXuat()+"Thuế VAT Điện Máy = "+ this.VAT();
     }
     @Override
     public void showHangHoa() {
         // TODO Auto-generated method stub
         
     }
+   
   
  
 }

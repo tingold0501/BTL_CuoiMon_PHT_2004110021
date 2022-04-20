@@ -9,21 +9,19 @@ public class ControllerHangHoa {
     private DanhSachHangHoa danhSachHangHoa = new DanhSachHangHoa();
     private String yn = null, nhaCC;
     private Date ngaySX , ngayHH, ngayNK;
+    private  HangHoa hangHoa;
     private SimpleDateFormat sFormat = new SimpleDateFormat("dd/MM/yyyy");
     // Hàm nhập cho Hàng Hoá
-    public void tiepTuc(){
-        ControllerHangHoa controllerHangHoa = new ControllerHangHoa();
-        DanhSachHangHoa danhSachHangHoa = new DanhSachHangHoa();
+    private void nhapNhieuHangHoa(){
         String luaChon = null;
         do{
-            HangHoa hangHoa = controllerHangHoa.nhapHangHoa();
+            HangHoa hangHoa = this.nhapHangHoa();
             danhSachHangHoa.themHangHoa(hangHoa);
-            System.out.println("Nhập Tiếp Không [Y/N]");
-            controllerHangHoa.sc.nextLine();
-            luaChon = controllerHangHoa.sc.nextLine();
+            System.out.println("Nhập Sản Phẩm Tiếp Không [Y/N]");
+            luaChon = sc.nextLine();
         }while(luaChon.equals("Y") || luaChon.equals("y"));
     }
-    public HangHoa nhapHangHoa(){
+    private HangHoa nhapHangHoa(){
         HangHoa hangHoa = null;
         System.out.println("Nhập Tên Hàng Hoá: ");
         String tenHH = sc.nextLine();
@@ -41,6 +39,7 @@ public class ControllerHangHoa {
                 int thoiGianBH = sc.nextInt();
                 System.out.println("Nhập Công Xuất Cho Hàng Hoá Trên:");
                 double congXuat = sc.nextDouble();
+                sc.nextLine();
                 hangHoa = new HangHoaDienMay(sLTKHH, tenHH, donGiaHH, thoiGianBH, congXuat);
                 break;
                 case 2:
@@ -75,8 +74,42 @@ public class ControllerHangHoa {
             }
         return hangHoa;
     }
-   
+    public void dataTest(){
+        HangHoa hHDM = new HangHoaDienMay(10, "Máy Lạnh", 100000, 12, 20);
+        HangHoa hHDM1 = new HangHoaDienMay(10, "Máy Lạnh", 100000, 12, 20);
+        HangHoa hHDM2 = new HangHoaDienMay(10, "Máy Lạnh", 100000, 12, 20);
+        HangHoa hHDM3 = new HangHoaDienMay(10, "Máy Lạnh", 100000, 12, 20);
+        HangHoa hHDM4 = new HangHoaDienMay(10, "Máy Lạnh", 100000, 12, 20);
+        HangHoa hHTP = new HangHoaThucPham(20, "Rau", 10000, new Date(), new Date(), "HCM");
+        HangHoa hHTP1 = new HangHoaThucPham(20, "Rau", 10000, new Date(), new Date(), "HCM");
+        HangHoa hHTP2 = new HangHoaThucPham(20, "Rau", 10000, new Date(), new Date(), "HCM");
+        HangHoa hHTP3 = new HangHoaThucPham(20, "Rau", 10000, new Date(), new Date(), "HCM");
+        HangHoa hHTP4 = new HangHoaThucPham(20, "Rau", 10000, new Date(), new Date(), "HCM");
+        HangHoa hHSS = new HangHoaSanhSu(30, "Máy Lạnh", 2000000, "HCM", new Date());
+        HangHoa hHSS1 = new HangHoaSanhSu(30, "Máy Lạnh", 2000000, "HCM", new Date());
+        HangHoa hHSS2 = new HangHoaSanhSu(30, "Máy Lạnh", 2000000, "HCM", new Date());
+        HangHoa hHSS3 = new HangHoaSanhSu(30, "Máy Lạnh", 2000000, "HCM", new Date());
+        HangHoa hHSS4 = new HangHoaSanhSu(30, "Máy Lạnh", 2000000, "HCM", new Date());
+        HangHoa hHSS5 = new HangHoaSanhSu(30, "Máy Lạnh", 2000000, "HCM", new Date());
+        danhSachHangHoa.themHangHoa(hHDM);
+        danhSachHangHoa.themHangHoa(hHDM1);
+        danhSachHangHoa.themHangHoa(hHDM2);
+        danhSachHangHoa.themHangHoa(hHDM3);
+        danhSachHangHoa.themHangHoa(hHDM4);
+        danhSachHangHoa.themHangHoa(hHTP);
+        danhSachHangHoa.themHangHoa(hHTP1);
+        danhSachHangHoa.themHangHoa(hHTP2);
+        danhSachHangHoa.themHangHoa(hHTP3);
+        danhSachHangHoa.themHangHoa(hHTP4);
+        danhSachHangHoa.themHangHoa(hHSS);
+        danhSachHangHoa.themHangHoa(hHSS1);
+        danhSachHangHoa.themHangHoa(hHSS2);
+        danhSachHangHoa.themHangHoa(hHSS3);
+        danhSachHangHoa.themHangHoa(hHSS4);
+        danhSachHangHoa.themHangHoa(hHSS5);
+    }
     public void menuHangHoa(){
+        this.dataTest();
         do{
             System.out.println("======================MENU===================");
             System.out.println("=1===============NHẬP HÀNG HOÁ===============");
@@ -86,6 +119,7 @@ public class ControllerHangHoa {
             System.out.println("=5===================BÁO CÁO=================");
             System.out.println("=6===================SẮP XẾP=================");
             System.out.println("=7==============HIỂN THỊ DANH SÁCH===========");
+            System.out.println("=8============TÌM HOÁ ĐÓN THEO MÃ============");
             System.out.println("=0====================EIXT===================");
             System.out.println("Nhập Lựa Chọn Của Bạn: ");
             int lc = sc.nextInt();
@@ -95,15 +129,17 @@ public class ControllerHangHoa {
                 break;
                 case 1:
                 System.out.println("===Bạn Đã Chọn Chức Năng Nhập Thêm Hàng Hoá===");
-                this.nhapHangHoa();
+                this.nhapNhieuHangHoa();
                 break;
                 case 2:
                 System.out.println("===Bạn Đã Chọn Chức Năng Xoá Hàng Hoá===");
-                danhSachHangHoa.xoaHangHoa();
+                // danhSachHangHoa.xoaHangHoa();
                 break;
                 case 3:
                 System.out.println("===Bạn Đã Chọn Chức Năng Sửa Hàng Hoá===");
-                danhSachHangHoa.suaHangHoa();
+                System.out.println("Nhập Mã Hàng Muốn Sửa: ");
+                int idSua = sc.nextInt();
+                // danhSachHangHoa.suaHangHoa(idSua);
                 break;
                 case 4:
                 System.out.println("===Bạn Đã Chọn Chức Năng Thống Kê Hàng Hoá===");
@@ -121,12 +157,18 @@ public class ControllerHangHoa {
                 System.out.println("===Bạn Đã Chọn Chức Năng Hiển Thị Hàng Hoá===");
                 danhSachHangHoa.hienThiHangHoa();
                 break;
+                case 8:
+                System.out.println("Nhập Mã Muốn Tìm: ");
+                int maTK = sc.nextInt();
+                danhSachHangHoa.timHangHoaTheoMa(maTK);
+                danhSachHangHoa.hienThiHangHoa();
+                break;
                 default: System.out.println("Lựa Chọn Không Hợp Lệ!!!");
                 break;
             }
-        System.out.println("Muốn Nhập Tiếp Không [Y/N]");
+        System.out.println("Muốn Dừng Chương Trình Không [Y/N]");
         yn = sc.nextLine();
-        }while(yn.equals("Y") || yn.equals("y"));
+        }while(yn.equals("N") || yn.equals("n"));
     }
 
     

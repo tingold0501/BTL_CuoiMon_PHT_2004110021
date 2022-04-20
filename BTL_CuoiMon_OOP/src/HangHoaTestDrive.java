@@ -1,6 +1,7 @@
 
 
 import java.io.IOException;
+import java.util.Date;
 
 public class HangHoaTestDrive {
     public static void main(String[] args) throws IOException {
@@ -9,9 +10,13 @@ public class HangHoaTestDrive {
         DanhSachHangHoa danhSachHangHoa = new DanhSachHangHoa();
         HangHoa hangHoa = new HangHoaSanhSu();
         DataFile fileWriter = new DataFile();
-        fileWriter.createFile();
-        fileWriter.writeFile();
-        fileWriter.readData();
+       
+       
+        controllerHangHoa.menuHangHoa();
+        
+        // fileWriter.createFile();
+        // fileWriter.writeFile();
+        // fileWriter.readData();
         
         // controllerHangHoa.menuHangHoa();
 

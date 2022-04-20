@@ -1,5 +1,4 @@
 
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -11,6 +10,7 @@ public class DanhSachHangHoa implements InterfaceHangHoa {
     private int sLHHThucPham;
     private String yn;
     private Scanner sc = new Scanner(System.in);
+
     public DanhSachHangHoa() {
 
     }
@@ -45,14 +45,30 @@ public class DanhSachHangHoa implements InterfaceHangHoa {
         this.sLHHThucPham = sLHHThucPham;
     }
 
-    public void xoaHangHoa() {
-        // Xử lý hàm xoá hàng hoá
+    public void xoaHangHoa(HangHoa hangHoa) {
+        this.lHoas.remove(hangHoa);
     }
 
-    public void suaHangHoa() {
-        // Xử lý hàm sửa hàng hoá
+    private void suaHangHoa(int index, HangHoa hangHoa) {
+        this.lHoas.set(index, hangHoa);
     }
-
+    public void suaHH(int idSua){
+       
+    }
+    public int timViTri(HangHoa hangHoa){
+        int viTri = -1;
+        viTri = this.lHoas.indexOf(viTri);
+        return viTri;
+    }
+    public HangHoa timHangHoaTheoMa( int maHH){
+        HangHoa hangHoa1 = null;
+        for (HangHoa hangHoa : lHoas) {
+            if(hangHoa.getMaH() == maHH){
+                hangHoa1 = hangHoa;
+            }
+        }
+        return hangHoa1;
+    }
     public void thongKeHangHoa() {
         // Xử lý hàm thống kê hàng hoá
     }
@@ -64,26 +80,20 @@ public class DanhSachHangHoa implements InterfaceHangHoa {
     public void sapXepHangHoa() {
         // Xử lý hàm sắp xếp hàng hoá
     }
-    public void themHangHoa(HangHoa hangHoa){
+
+    public void themHangHoa(HangHoa hangHoa) {
         lHoas.add(hangHoa);
     }
-    public void themHangHoas(HangHoa hangHoa){
-        System.out.println("Nhập Tiếp Không [Y/N]");
-        yn = sc.nextLine();
-        while(yn.equals("Y") || yn.equals("y")){
-            this.themHangHoa(hangHoa);
-        }
-    }
-    public void hienThiHangHoa(){
+
+    public void hienThiHangHoa() {
         for (HangHoa hangHoa : lHoas) {
             System.out.println(hangHoa);
         }
     }
-    
+
     @Override
     public void showHangHoa() {
-        
+
     }
 
-   
 }
