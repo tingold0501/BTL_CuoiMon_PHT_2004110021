@@ -1,5 +1,5 @@
 
-import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -9,6 +9,7 @@ import java.util.Scanner;
 public class DanhSachHangHoa implements InterfaceHangHoa {
     private List<HangHoa> lHoas = new ArrayList<>();
     private DuLieuHangHoaFile dFile = new DuLieuHangHoaFile();
+    private HangHoa hangHoa;
     private static int sLHHDienMay,sLHHSanhSu,sLHHThucPham;
     private int sumDM, sumSS, sumTP, sum;
     public Scanner sc = new Scanner(System.in);
@@ -68,6 +69,7 @@ public class DanhSachHangHoa implements InterfaceHangHoa {
             System.out.println("Hàng Hoá Không Tồn Tại");
         }
     }
+   
     public void tinhSLTungLoaiHang() {
         for (HangHoa hangHoa : lHoas) {
             if (hangHoa instanceof HangHoaThucPham) {
@@ -79,18 +81,11 @@ public class DanhSachHangHoa implements InterfaceHangHoa {
                 
             } else if (hangHoa instanceof HangHoaSanhSu) {
                 this.sLHHSanhSu++;
-                
             }
         }
     }
 
-    public void tongSoLuongTungLoaiHang() {
-        System.out.println("Tong so loai Hang Thuc Pham la: "+ sLHHThucPham);
-        System.out.println("Tong so loai Hang Dien May la: "+ sLHHDienMay);
-        System.out.println("Tong so loai Hang Sanh Su la: "+ sLHHSanhSu);
-    }
-
-    public void tinhSLHangHoaTungLoai() {
+    private void tinhSLHangHoaTungLoai() {
         for (HangHoa hangHoa : lHoas) {
             if (hangHoa instanceof HangHoaThucPham) {
                 sumTP += hangHoa.getsLTonKhoH();  
@@ -104,16 +99,13 @@ public class DanhSachHangHoa implements InterfaceHangHoa {
     }
 
     public void tongSlHangHoaTungLoai(){
+        this.tinhSLHangHoaTungLoai();
         System.out.println("Tong so luong Hang Thuc Pham ton kho= " + sumTP);
         System.out.println("Tong so luong Hang Dien May ton kho= " + sumDM);
         System.out.println("Tong so luong Hang Sanh Su ton kho = " + sumSS);
-    }
-
-    public void tongHangHoa(){
         sum = sumTP + sumDM + sumSS;
         System.out.println("Tong so hang con trong kho la:" + sum);
     }
-   
     public HangHoa timHangHoaTheoMa(int maHH) {
         HangHoa hangHoa1 = null;
         for (HangHoa hangHoa : lHoas) {
@@ -147,7 +139,6 @@ public class DanhSachHangHoa implements InterfaceHangHoa {
             }
         });
         this.hienThiHangHoa();
-
     }
    
     public void themHangHoa(HangHoa hangHoa) {
@@ -155,16 +146,18 @@ public class DanhSachHangHoa implements InterfaceHangHoa {
         dFile.write(lHoas);
 
     }
-
     public void hienThiHangHoa() {
         for (HangHoa hangHoa : lHoas) {
+            dFile.read();
             System.out.println(hangHoa);
+            System.out.println();
         }
     }
 
     @Override
     public void showHangHoa() {
-
+        System.out.println("==================THÔNG TIN TỔNG QUÁT================");
+        System.out.println(hangHoa);
     }
 
 }
