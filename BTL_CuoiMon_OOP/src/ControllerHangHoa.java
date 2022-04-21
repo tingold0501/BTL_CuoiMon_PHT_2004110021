@@ -1,81 +1,214 @@
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 
 public class ControllerHangHoa {
     public Scanner sc = new Scanner(System.in);
     private DanhSachHangHoa danhSachHangHoa = new DanhSachHangHoa();
-    private String yn = null, nhaCC;
+    private List<HangHoa> lHoas = new ArrayList<>();
+    private DuLieuHangHoaFile dFile;
     private Date ngaySX, ngayHH, ngayNK;
+    private String nhaCC;
+
+    public ControllerHangHoa() {
+        dFile = new DuLieuHangHoaFile();
+        lHoas = dFile.read();
+    }
+
+    public ControllerHangHoa(List<HangHoa> lHoas) {
+        this.lHoas = lHoas;
+    }
+
+    public List<HangHoa> getlHoas() {
+        return lHoas;
+    }
+
+    public void setlHoas(List<HangHoa> lHoas) {
+        this.lHoas = lHoas;
+    }
+
+    private String yn = null;
     private SimpleDateFormat sFormat = new SimpleDateFormat("dd/MM/yyyy");
 
     // Hàm nhập cho Hàng Hoá
-   
 
-    private void nhapHH() {
-        String luaChon = null;
-        do {
-            HangHoa hangHoa = this.nhapHangHoa();
-            danhSachHangHoa.themHangHoa(hangHoa);
-            System.out.println("Nhập Sản Phẩm Tiếp Không [Y/N]");
-            luaChon = sc.nextLine();
-        } while (luaChon.equals("Y") || luaChon.equals("y"));
+    private String nhapTenHang() {
+        System.out.print("Nhập Tên Hàng Hoá: ");
+        return sc.nextLine();
     }
 
-    private HangHoa nhapHangHoa() {
-        HangHoa hangHoa = null;
-        System.out.println("Nhập Tên Hàng Hoá: ");
-        String tenHH = sc.nextLine();
-        System.out.println("Nhập Đơn Giá Hàng Hoá: ");
-        double donGiaHH = sc.nextDouble();
+    private String nhapNhaCungCap() {
+        System.out.println("Nhập Nhà Cung Cấp:");
+        return sc.nextLine();
+    }
+
+    private String nhapNhaSX() {
+        System.out.println("Nhập Nhà Sản Xuất:");
+        return sc.nextLine();
+    }
+
+    private int nhapSLTK() {
         System.out.println("Nhập Số Lượng Tồn Kho: ");
-        int sLTKHH = sc.nextInt();
+        while (true) {
+            try {
+                int maH = Integer.parseInt((sc.nextLine()));
+                return maH;
+            } catch (NumberFormatException ex) {
+                System.out.println("Nhập Lại Số Lượng ");
+            }
+        }
+    }
+
+    private double nhapDonGia() {
+        System.out.println("Nhập Đơn Giá:");
+        while (true) {
+            try {
+                double donGiaH = Double.parseDouble(sc.nextLine());
+                return donGiaH;
+            } catch (Exception e) {
+                System.out.println("Nhập Lại Đơn Giá");
+            }
+        }
+    }
+
+    private int nhapThoiGianBH() {
+        System.out.println("Nhập Thời Gian Bảo Hành: ");
+        while (true) {
+            try {
+                int tGBH = Integer.parseInt((sc.nextLine()));
+                return tGBH;
+            } catch (NumberFormatException ex) {
+                System.out.println("Nhập Lại Thời Gian Bảo Hành ");
+            }
+        }
+    }
+
+    private double nhapCongXuat() {
+        System.out.println("Nhập Công Xuất:");
+        while (true) {
+            try {
+                double congXuat = Double.parseDouble(sc.nextLine());
+                return congXuat;
+            } catch (Exception e) {
+                System.out.println("Nhập Lại Công Xuất");
+            }
+        }
+    }
+
+    private Date nhapNgayNhapKho() {
+        while (true) {
+            try {
+                System.out.println("Nhập Ngày Nhập Kho[dd/MM/yyyy]:");
+                Date ngayNK = sFormat.parse(sc.nextLine());
+                return ngayNK;
+            } catch (Exception e) {
+                System.out.println("Ngày Nhập Kho Không Hợp Lệ!!");
+            }
+        }
+    }
+    private Date nhapNgaySanXuat() {
+        while (true) {
+            try {
+                System.out.println("Nhập Ngày Sản Xuất[dd/MM/yyyy]:");
+                Date ngayNK = sFormat.parse(sc.nextLine());
+                return ngayNK;
+            } catch (Exception e) {
+                System.out.println("Ngày Sản Xuất Không Hợp Lệ!!");
+            }
+        }
+    }
+    private Date nhapNgayHetHan() {
+        while (true) {
+            try {
+                System.out.println("Nhập Ngày Hết Hạn[dd/MM/yyyy]:");
+                Date ngayNK = sFormat.parse(sc.nextLine());
+                return ngayNK;
+            } catch (Exception e) {
+                System.out.println("Ngày Hết Hạn Không Hợp Lệ!!");
+            }
+        }
+    }
+    // private void nhapHH() {
+    //     String luaChon = null;
+    //     do {
+    //         HangHoa hangHoa = this.nhapHangHoa();
+    //         danhSachHangHoa.themHangHoa(hangHoa);
+    //         System.out.println("Nhập Sản Phẩm Tiếp Không [Y/N]");
+    //         luaChon = sc.nextLine();
+    //     } while (luaChon.equals("Y") || luaChon.equals("y"));
+    // }
+
+    // public void add() {
+        
+    //     String name = inputName();
+    //     byte age = inputAge();
+    //     String address = inputAddress();
+    //     float gpa = inputGpa();
+    //     Student student = new Student(id, name, age, address, gpa);
+    //     studentList.add(student);
+    //     studentDao.write(studentList);
+    // }
+
+
+    public void suaHangHoa(int maSua) {
+        boolean isExisted = false;
+        int size = lHoas.size();
+        for (int i = 0; i < size; i++) {
+            if (lHoas.get(i).getMaH() == maSua) {
+                isExisted = true;
+                lHoas.get(i).setTenH(nhapTenHang());
+                lHoas.get(i).setDonGiaH(nhapDonGia());
+                lHoas.get(i).setsLTonKhoH(nhapSLTK());
+                break;
+            }
+        }
+        if (!isExisted) {
+            System.out.printf("Mã Hàng = %d Không Tồn Tại.\n", maSua);
+        } else {
+            dFile.write(lHoas);
+        }
+    }
+    private void nhapHangHoa() {
+        HangHoa hangHoa = null;
+        int id = (lHoas.size() > 0) ? (lHoas.size() + 1) : 1;
+        System.out.println("Mã Hàng Hoá = " + id);
+        String tenHH = this.nhapTenHang();
+        double donGiaHH = this.nhapDonGia();
+        int sLTKHH = this.nhapSLTK();
         System.out.println("Muốn Nhập Hoá Đơn Nào? [1: Điện Máy] [2:Thực Phẩm] [3:Sành Sứ]");
         int lc = sc.nextInt();
         sc.nextLine();
         switch (lc) {
             case 1:
                 System.out.println("===Bạn Đang Chọn Nhập Cho Điện Máy===");
-                System.out.println("Nhập Thời Gian Bảo Hành Cho Hàng Hoá Trên:");
-                int thoiGianBH = sc.nextInt();
-                System.out.println("Nhập Công Xuất Cho Hàng Hoá Trên:");
-                double congXuat = sc.nextDouble();
+                int thoiGianBH = this.nhapThoiGianBH();
+                double congXuat = this.nhapCongXuat();
                 sc.nextLine();
                 hangHoa = new HangHoaDienMay(sLTKHH, tenHH, donGiaHH, thoiGianBH, congXuat);
                 break;
             case 2:
                 // Thực hiện chức năng nhập Hàng Hoá Thực Phẩm
                 System.out.println("===Bạn Đang Chọn Chức Năng Cho Thực Phẩm===");
-                try {
-                    System.out.println("Nhập Ngày Sản Xuất Cho Hàng Hoá Trên: [dd/MM/yyyy]");
-                    ngaySX = sFormat.parse(sc.nextLine());
-                    System.out.println("Nhập Ngày Hết Hạn Cho Hàng Hoá Trên:[dd/MM/yyyy]");
-                    ngayHH = sFormat.parse(sc.nextLine());
-                    System.out.println("Nhập Nhà Cung Cấp Cho Hàng Hoá Trên:");
-                    nhaCC = sc.nextLine();
-                } catch (Exception e) {
-                    System.out.println("Dữ Liệu Nhập Không Hợp Lệ!!");
-                }
+                ngaySX = this.nhapNgaySanXuat();
+                ngayHH = this.nhapNgayHetHan();
+                nhaCC = this.nhapNhaCungCap();
                 hangHoa = new HangHoaThucPham(sLTKHH, tenHH, donGiaHH, ngaySX, ngayHH, nhaCC);
                 break;
             case 3:
                 // Thực hiện chức năng nhập Hàng Hoá Sành Sứ
                 System.out.println("===Bạn Đang Chọn Nhập Cho Sành Sứ===");
-                System.out.println("Nhập Nhà Sản Xuất Cho Hàng Hoá Trên: ");
-                String nhaSXHH = sc.nextLine();
-                try {
-                    System.out.println("Nhập Ngày Nhập Kho Cho Hàng Hoá Trên:");
-                    ngayNK = sFormat.parse(sc.nextLine());
-                } catch (Exception e) {
-                    System.out.println("Dữ Liệu Không Hợp Lệ!!!");
-                }
+                String nhaSXHH = this.nhapNhaSX();
+                ngayNK = this.nhapNgayNhapKho();
                 hangHoa = new HangHoaSanhSu(sLTKHH, tenHH, donGiaHH, nhaSXHH, ngayNK);
                 break;
             default:
                 System.out.println("Lựa Chọn Không Hợp Lệ!!!");
         }
-        return hangHoa;
+        lHoas.add(hangHoa);
+        dFile.write(lHoas);
     }
 
     public void dataTest() {
@@ -124,7 +257,7 @@ public class ControllerHangHoa {
             System.out.println("=5===================BÁO CÁO=================");
             System.out.println("=6===================SẮP XẾP=================");
             System.out.println("=7==============HIỂN THỊ DANH SÁCH===========");
-            System.out.println("=8============TÌM HOÁ ĐÓN THEO MÃ============");
+            System.out.println("=8=============TÌM HÀNG HOÁ THEO MÃ==========");
             System.out.println("=0====================EIXT===================");
             System.out.println("Nhập Lựa Chọn Của Bạn: ");
             int lc = sc.nextInt();
@@ -134,7 +267,7 @@ public class ControllerHangHoa {
                     break;
                 case 1:
                     System.out.println("===Bạn Đã Chọn Chức Năng Nhập Thêm Hàng Hoá===");
-                    this.nhapHH();
+                    this.nhapHangHoa();
                     break;
                 case 2:
                     System.out.println("===Bạn Đã Chọn Chức Năng Xoá Hàng Hoá===");
@@ -142,25 +275,24 @@ public class ControllerHangHoa {
                     break;
                 case 3:
                     System.out.println("===Bạn Đã Chọn Chức Năng Sửa Hàng Hoá===");
-                    danhSachHangHoa.suaHH();
+                    System.out.println("Nhập Mã Muốn Sửa:");
+                    int maS = sc.nextInt();
+                    sc.nextLine();
+                    this.suaHangHoa(maS);
                     break;
                 case 4:
                     System.out.println("===Bạn Đã Chọn Chức Năng Thống Kê Hàng Hoá===");
-                    danhSachHangHoa.thongKeHangHoa();
+            
                     break;
                 case 5:
-                    System.out.println("===Bạn Đã Chọn Chức Năng Báo Cáo Hàng Hoá===");
-                    danhSachHangHoa.baoCaoHangHoa();
-                    break;
-                case 6:
                     System.out.println("===Bạn Đã Chọn Chức Năng Sắp Xếp Hàng Hoá===");
                     danhSachHangHoa.sapXepHangHoa();
                     break;
-                case 7:
+                case 6:
                     System.out.println("===Bạn Đã Chọn Chức Năng Hiển Thị Hàng Hoá===");
                     danhSachHangHoa.hienThiHangHoa();
                     break;
-                case 8:
+                case 7:
                     System.out.println("Nhập Mã Muốn Tìm: ");
                     int maTK = sc.nextInt();
                     sc.nextLine();
