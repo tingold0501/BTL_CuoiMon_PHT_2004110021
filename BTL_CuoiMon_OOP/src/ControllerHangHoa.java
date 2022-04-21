@@ -1,5 +1,4 @@
 
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
@@ -8,20 +7,23 @@ public class ControllerHangHoa {
     public Scanner sc = new Scanner(System.in);
     private DanhSachHangHoa danhSachHangHoa = new DanhSachHangHoa();
     private String yn = null, nhaCC;
-    private Date ngaySX , ngayHH, ngayNK;
-    private  HangHoa hangHoa;
+    private Date ngaySX, ngayHH, ngayNK;
     private SimpleDateFormat sFormat = new SimpleDateFormat("dd/MM/yyyy");
+
     // Hàm nhập cho Hàng Hoá
-    private void nhapNhieuHangHoa(){
+   
+
+    private void nhapHH() {
         String luaChon = null;
-        do{
+        do {
             HangHoa hangHoa = this.nhapHangHoa();
             danhSachHangHoa.themHangHoa(hangHoa);
             System.out.println("Nhập Sản Phẩm Tiếp Không [Y/N]");
             luaChon = sc.nextLine();
-        }while(luaChon.equals("Y") || luaChon.equals("y"));
+        } while (luaChon.equals("Y") || luaChon.equals("y"));
     }
-    private HangHoa nhapHangHoa(){
+
+    private HangHoa nhapHangHoa() {
         HangHoa hangHoa = null;
         System.out.println("Nhập Tên Hàng Hoá: ");
         String tenHH = sc.nextLine();
@@ -29,11 +31,11 @@ public class ControllerHangHoa {
         double donGiaHH = sc.nextDouble();
         System.out.println("Nhập Số Lượng Tồn Kho: ");
         int sLTKHH = sc.nextInt();
-            System.out.println("Muốn Nhập Hoá Đơn Nào? [1: Điện Máy] [2:Thực Phẩm] [3:Sành Sứ]");
-            int lc = sc.nextInt();
-            sc.nextLine();
-            switch(lc){
-                case 1:
+        System.out.println("Muốn Nhập Hoá Đơn Nào? [1: Điện Máy] [2:Thực Phẩm] [3:Sành Sứ]");
+        int lc = sc.nextInt();
+        sc.nextLine();
+        switch (lc) {
+            case 1:
                 System.out.println("===Bạn Đang Chọn Nhập Cho Điện Máy===");
                 System.out.println("Nhập Thời Gian Bảo Hành Cho Hàng Hoá Trên:");
                 int thoiGianBH = sc.nextInt();
@@ -42,7 +44,7 @@ public class ControllerHangHoa {
                 sc.nextLine();
                 hangHoa = new HangHoaDienMay(sLTKHH, tenHH, donGiaHH, thoiGianBH, congXuat);
                 break;
-                case 2:
+            case 2:
                 // Thực hiện chức năng nhập Hàng Hoá Thực Phẩm
                 System.out.println("===Bạn Đang Chọn Chức Năng Cho Thực Phẩm===");
                 try {
@@ -55,9 +57,9 @@ public class ControllerHangHoa {
                 } catch (Exception e) {
                     System.out.println("Dữ Liệu Nhập Không Hợp Lệ!!");
                 }
-                hangHoa = new HangHoaThucPham(sLTKHH, tenHH, donGiaHH, ngaySX , ngayHH, nhaCC);
+                hangHoa = new HangHoaThucPham(sLTKHH, tenHH, donGiaHH, ngaySX, ngayHH, nhaCC);
                 break;
-                case 3:
+            case 3:
                 // Thực hiện chức năng nhập Hàng Hoá Sành Sứ
                 System.out.println("===Bạn Đang Chọn Nhập Cho Sành Sứ===");
                 System.out.println("Nhập Nhà Sản Xuất Cho Hàng Hoá Trên: ");
@@ -70,11 +72,13 @@ public class ControllerHangHoa {
                 }
                 hangHoa = new HangHoaSanhSu(sLTKHH, tenHH, donGiaHH, nhaSXHH, ngayNK);
                 break;
-                default: System.out.println("Lựa Chọn Không Hợp Lệ!!!");
-            }
+            default:
+                System.out.println("Lựa Chọn Không Hợp Lệ!!!");
+        }
         return hangHoa;
     }
-    public void dataTest(){
+
+    public void dataTest() {
         HangHoa hHDM = new HangHoaDienMay(10, "Máy Lạnh", 100000, 12, 20);
         HangHoa hHDM1 = new HangHoaDienMay(10, "Máy Lạnh", 100000, 12, 20);
         HangHoa hHDM2 = new HangHoaDienMay(10, "Máy Lạnh", 100000, 12, 20);
@@ -108,9 +112,10 @@ public class ControllerHangHoa {
         danhSachHangHoa.themHangHoa(hHSS4);
         danhSachHangHoa.themHangHoa(hHSS5);
     }
-    public void menuHangHoa(){
+
+    public void menuHangHoa() {
         this.dataTest();
-        do{
+        do {
             System.out.println("======================MENU===================");
             System.out.println("=1===============NHẬP HÀNG HOÁ===============");
             System.out.println("=2================XOÁ HÀNG HOÁ===============");
@@ -124,52 +129,50 @@ public class ControllerHangHoa {
             System.out.println("Nhập Lựa Chọn Của Bạn: ");
             int lc = sc.nextInt();
             sc.nextLine();
-            switch(lc){
+            switch (lc) {
                 case 0:
-                break;
+                    break;
                 case 1:
-                System.out.println("===Bạn Đã Chọn Chức Năng Nhập Thêm Hàng Hoá===");
-                this.nhapNhieuHangHoa();
-                break;
+                    System.out.println("===Bạn Đã Chọn Chức Năng Nhập Thêm Hàng Hoá===");
+                    this.nhapHH();
+                    break;
                 case 2:
-                System.out.println("===Bạn Đã Chọn Chức Năng Xoá Hàng Hoá===");
-                // danhSachHangHoa.xoaHangHoa();
-                break;
+                    System.out.println("===Bạn Đã Chọn Chức Năng Xoá Hàng Hoá===");
+                    danhSachHangHoa.xoaHH();
+                    break;
                 case 3:
-                System.out.println("===Bạn Đã Chọn Chức Năng Sửa Hàng Hoá===");
-                System.out.println("Nhập Mã Hàng Muốn Sửa: ");
-                int idSua = sc.nextInt();
-                // danhSachHangHoa.suaHangHoa(idSua);
-                break;
+                    System.out.println("===Bạn Đã Chọn Chức Năng Sửa Hàng Hoá===");
+                    danhSachHangHoa.suaHH();
+                    break;
                 case 4:
-                System.out.println("===Bạn Đã Chọn Chức Năng Thống Kê Hàng Hoá===");
-                danhSachHangHoa.thongKeHangHoa();
-                break;
+                    System.out.println("===Bạn Đã Chọn Chức Năng Thống Kê Hàng Hoá===");
+                    danhSachHangHoa.thongKeHangHoa();
+                    break;
                 case 5:
-                System.out.println("===Bạn Đã Chọn Chức Năng Báo Cáo Hàng Hoá===");
-                danhSachHangHoa.baoCaoHangHoa();
-                break;
+                    System.out.println("===Bạn Đã Chọn Chức Năng Báo Cáo Hàng Hoá===");
+                    danhSachHangHoa.baoCaoHangHoa();
+                    break;
                 case 6:
-                System.out.println("===Bạn Đã Chọn Chức Năng Sắp Xếp Hàng Hoá===");
-                danhSachHangHoa.sapXepHangHoa();
-                break;
+                    System.out.println("===Bạn Đã Chọn Chức Năng Sắp Xếp Hàng Hoá===");
+                    danhSachHangHoa.sapXepHangHoa();
+                    break;
                 case 7:
-                System.out.println("===Bạn Đã Chọn Chức Năng Hiển Thị Hàng Hoá===");
-                danhSachHangHoa.hienThiHangHoa();
-                break;
+                    System.out.println("===Bạn Đã Chọn Chức Năng Hiển Thị Hàng Hoá===");
+                    danhSachHangHoa.hienThiHangHoa();
+                    break;
                 case 8:
-                System.out.println("Nhập Mã Muốn Tìm: ");
-                int maTK = sc.nextInt();
-                sc.nextLine();
-                danhSachHangHoa.timHangHoaTheoMa(maTK);
-                break;
-                default: System.out.println("Lựa Chọn Không Hợp Lệ!!!");
-                break;
+                    System.out.println("Nhập Mã Muốn Tìm: ");
+                    int maTK = sc.nextInt();
+                    sc.nextLine();
+                    danhSachHangHoa.timHangHoaTheoMa(maTK);
+                    break;
+                default:
+                    System.out.println("Lựa Chọn Không Hợp Lệ!!!");
+                    break;
             }
-        System.out.println("Muốn Dừng Chương Trình Không [Y/N]");
-        yn = sc.nextLine();
-        }while(yn.equals("N") || yn.equals("n"));
+            System.out.println("Muốn Dừng Chương Trình Không [Y/N]");
+            yn = sc.nextLine();
+        } while (yn.equals("N") || yn.equals("n"));
     }
 
-    
 }

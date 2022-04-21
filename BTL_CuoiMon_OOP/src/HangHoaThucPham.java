@@ -11,7 +11,7 @@ public class HangHoaThucPham extends HangHoa {
     public Date getNgaySXH() {
         return ngaySXH;
     }
-    private void setNgaySXH(Date ngaySXH) {
+    public void setNgaySXH(Date ngaySXH) {
         if(ngaySXH.before(this.ngayHHH)){
             this.ngaySXH = ngaySXH;
         }
@@ -22,7 +22,7 @@ public class HangHoaThucPham extends HangHoa {
     public Date getNgayHHH() {
         return ngayHHH;
     }
-    private void setNgayHHH(Date ngayHHH) {
+    public void setNgayHHH(Date ngayHHH) {
         if(ngayHHH.after(this.ngaySXH)){
             this.ngayHHH = ngayHHH;
         }
@@ -33,7 +33,7 @@ public class HangHoaThucPham extends HangHoa {
     public String getNhaCC() {
         return nhaCC;
     }
-    private void setNhaCC(String nhaCC) {
+    public void setNhaCC(String nhaCC) {
         if(nhaCC != null && nhaCC != ""){
             this.nhaCC = nhaCC;
         }

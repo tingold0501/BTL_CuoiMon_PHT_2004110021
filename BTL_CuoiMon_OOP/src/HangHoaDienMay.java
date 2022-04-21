@@ -9,7 +9,7 @@ public class HangHoaDienMay extends HangHoa implements InterfaceHangHoa{
     public int getThoiGianBH() {
         return thoiGianBH;
     }
-    private void setThoiGianBH(int thoiGianBH) {
+    public void setThoiGianBH(int thoiGianBH) {
         if(thoiGianBH > 0){
             this.thoiGianBH = thoiGianBH;
         }
@@ -20,7 +20,7 @@ public class HangHoaDienMay extends HangHoa implements InterfaceHangHoa{
     public double getCongXuat() {
         return congXuat;
     }
-    private void setCongXuat(double congXuat) {
+    public void setCongXuat(double congXuat) {
         if(congXuat > 0){
             this.congXuat = congXuat;
         }

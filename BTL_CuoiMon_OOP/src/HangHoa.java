@@ -12,7 +12,7 @@ public abstract class HangHoa {
     public int getMaH() {
         return maH;
     }
-    private void setMaH(int maH) {
+    public void setMaH(int maH) {
         if(maH > 0){
             this.maH = maH;
         }
@@ -24,7 +24,7 @@ public abstract class HangHoa {
     public int getsLTonKhoH() {
         return sLTonKhoH;
     }
-    private void setsLTonKhoH(int sLTonKhoH) {
+    public void setsLTonKhoH(int sLTonKhoH) {
         if(sLTonKhoH > 0){
             this.sLTonKhoH = sLTonKhoH;
         }
@@ -35,7 +35,7 @@ public abstract class HangHoa {
     public String getTenH() {
         return tenH;
     }
-    private void setTenH(String tenH) {
+    public void setTenH(String tenH) {
         if(tenH != null){
             this.tenH = tenH;
         }
@@ -46,7 +46,7 @@ public abstract class HangHoa {
     public double getDonGiaH() {
         return donGiaH;
     }
-    private void setDonGiaH(double donGiaH) {
+    public void setDonGiaH(double donGiaH) {
         if(donGiaH > 0 ){
             this.donGiaH = donGiaH;
         }
