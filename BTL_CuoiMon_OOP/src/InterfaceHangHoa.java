@@ -1,5 +1,8 @@
 
 
 public interface InterfaceHangHoa {
-    void showHangHoa();
+    void xoaHangHoa();
+    void sapXepHangHoa();
+    void hienThiHangHoa();
+    void tongSlHangHoaTungLoai();
 }

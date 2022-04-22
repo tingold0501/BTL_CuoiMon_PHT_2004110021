@@ -1,6 +1,6 @@
 
 
-public class HangHoaDienMay extends HangHoa implements InterfaceHangHoa{
+public class HangHoaDienMay extends HangHoa{
     private int thoiGianBH;
     private double congXuat;
     public HangHoaDienMay(){
@@ -47,11 +47,7 @@ public class HangHoaDienMay extends HangHoa implements InterfaceHangHoa{
     public String toString() {
         return super.toString()+"================Thông Tin Hàng Hoá Điện Máy\n" + "Thời Gian Bảo Hành = " + this.getThoiGianBH()+ "Công Xuất = " + this.getCongXuat()+"Thuế VAT Điện Máy = "+ this.VAT();
     }
-    @Override
-    public void showHangHoa() {
-        // TODO Auto-generated method stub
-        
-    }
+   
    
   
  

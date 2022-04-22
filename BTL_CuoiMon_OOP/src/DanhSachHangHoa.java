@@ -9,7 +9,6 @@ import java.util.Scanner;
 public class DanhSachHangHoa implements InterfaceHangHoa {
     private List<HangHoa> lHoas = new ArrayList<>();
     private DuLieuHangHoaFile dFile = new DuLieuHangHoaFile();
-    private HangHoa hangHoa;
     private static int sLHHDienMay,sLHHSanhSu,sLHHThucPham;
     private int sumDM, sumSS, sumTP, sum;
     public Scanner sc = new Scanner(System.in);
@@ -48,11 +47,11 @@ public class DanhSachHangHoa implements InterfaceHangHoa {
         this.sLHHThucPham = sLHHThucPham;
     }
 
-    private void xoaHangHoa(HangHoa hangHoa) {
+    private void xoaHH(HangHoa hangHoa) {
         this.lHoas.remove(hangHoa);
     }
-
-    public void xoaHH() {
+    @Override
+    public void xoaHangHoa() {
         HangHoa hangHoa1 = null;
         System.out.println("Nhập Mã Hàng Muốn Xoá:");
         int maHH = sc.nextInt();
@@ -63,28 +62,13 @@ public class DanhSachHangHoa implements InterfaceHangHoa {
             }
         }
         if (hangHoa1 != null) {
-            this.xoaHangHoa(hangHoa1);
+            this.xoaHH(hangHoa1);
             System.out.println("Hàng Hoá Đã Được Xoá");
         } else {
             System.out.println("Hàng Hoá Không Tồn Tại");
         }
+        
     }
-   
-    public void tinhSLTungLoaiHang() {
-        for (HangHoa hangHoa : lHoas) {
-            if (hangHoa instanceof HangHoaThucPham) {
-                this.sLHHThucPham++;
-                
-            }
-            if (hangHoa instanceof HangHoaDienMay) {
-                this.sLHHDienMay++;
-                
-            } else if (hangHoa instanceof HangHoaSanhSu) {
-                this.sLHHSanhSu++;
-            }
-        }
-    }
-
     private void tinhSLHangHoaTungLoai() {
         for (HangHoa hangHoa : lHoas) {
             if (hangHoa instanceof HangHoaThucPham) {
@@ -97,32 +81,19 @@ public class DanhSachHangHoa implements InterfaceHangHoa {
             }
         }
     }
-
-    public void tongSlHangHoaTungLoai(){
+    @Override
+    public void tongSlHangHoaTungLoai() {
         this.tinhSLHangHoaTungLoai();
         System.out.println("Tong so luong Hang Thuc Pham ton kho= " + sumTP);
         System.out.println("Tong so luong Hang Dien May ton kho= " + sumDM);
         System.out.println("Tong so luong Hang Sanh Su ton kho = " + sumSS);
         sum = sumTP + sumDM + sumSS;
         System.out.println("Tong so hang con trong kho la:" + sum);
+        
     }
-    public HangHoa timHangHoaTheoMa(int maHH) {
-        HangHoa hangHoa1 = null;
-        for (HangHoa hangHoa : lHoas) {
-            if (maHH == hangHoa.getMaH()) {
-                hangHoa1 = hangHoa;
-                System.out.println(hangHoa1);  
-                break;    
-            }   
-        }
-        if(maHH != hangHoa1.getMaH()){
-            System.out.println("Mã Hàng Không Tồn Tại");
-        }
-        return hangHoa1;
-    }
-
+    @Override
     public void sapXepHangHoa() {
-        Collections.sort(lHoas, new Comparator<HangHoa>() {
+            Collections.sort(lHoas, new Comparator<HangHoa>() {
             @Override
             public int compare(HangHoa o1, HangHoa o2) {
                 if(o1.getDonGiaH() < o2.getDonGiaH()){
@@ -140,24 +111,33 @@ public class DanhSachHangHoa implements InterfaceHangHoa {
         });
         this.hienThiHangHoa();
     }
-   
+
+    @Override
+    public void hienThiHangHoa() {
+        for (HangHoa hangHoa : lHoas) {
+                    dFile.read();
+                    System.out.println(hangHoa);
+                    System.out.println();
+                }
+        
+    }
+    public HangHoa timHangHoaTheoMa(int maHH) {
+        HangHoa hangHoa1 = null;
+        for (HangHoa hangHoa : lHoas) {
+            if (maHH == hangHoa.getMaH()) {
+                hangHoa1 = hangHoa;
+                System.out.println(hangHoa1);  
+                break;    
+            }   
+        }
+        if(maHH != hangHoa1.getMaH()){
+            System.out.println("Mã Hàng Không Tồn Tại");
+        }
+        return hangHoa1;
+    }   
     public void themHangHoa(HangHoa hangHoa) {
         lHoas.add(hangHoa);
         dFile.write(lHoas);
 
     }
-    public void hienThiHangHoa() {
-        for (HangHoa hangHoa : lHoas) {
-            dFile.read();
-            System.out.println(hangHoa);
-            System.out.println();
-        }
-    }
-
-    @Override
-    public void showHangHoa() {
-        System.out.println("==================THÔNG TIN TỔNG QUÁT================");
-        System.out.println(hangHoa);
-    }
-
 }

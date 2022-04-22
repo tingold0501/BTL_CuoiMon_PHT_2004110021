@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class ControllerHangHoa {
     public Scanner sc = new Scanner(System.in);
-    private DanhSachHangHoa danhSachHangHoa = new DanhSachHangHoa();
+    private DanhSachHangHoa dSHH = new DanhSachHangHoa();
     private List<HangHoa> lHoas = new ArrayList<>();
     private DuLieuHangHoaFile dFile = new DuLieuHangHoaFile();
     private Date ngaySX, ngayHH, ngayNK;
@@ -41,7 +41,7 @@ public class ControllerHangHoa {
         return sc.nextLine();
     }
 
-    private String nhapNhaCungCap() {
+    private String nhapNhaCC() {
         System.out.println("Nhập Nhà Cung Cấp:");
         return sc.nextLine();
     }
@@ -149,7 +149,7 @@ public class ControllerHangHoa {
             System.out.printf("Mã Hàng = %d Không Tồn Tại.\n", maSua);
         } 
     }
-    private void nhapHangHoa() {
+    private HangHoa nhapHangHoa() {
         HangHoa hangHoa = null;
         int id = (lHoas.size() > 0) ? (lHoas.size() + 1) : 1;
         System.out.println("Mã Hàng Hoá = " + id);
@@ -172,7 +172,7 @@ public class ControllerHangHoa {
                 System.out.println("===Bạn Đang Chọn Chức Năng Cho Thực Phẩm===");
                 ngaySX = this.nhapNgaySanXuat();
                 ngayHH = this.nhapNgayHetHan();
-                nhaCC = this.nhapNhaCungCap();
+                nhaCC = this.nhapNhaCC();
                 hangHoa = new HangHoaThucPham(sLTKHH, tenHH, donGiaHH, ngaySX, ngayHH, nhaCC);
                 break;
             case 3:
@@ -187,9 +187,10 @@ public class ControllerHangHoa {
         }
         lHoas.add(hangHoa);
         // dFile.write(lHoas);
+        return hangHoa;
     }
 
-    public void dataTest() {
+    public void data() {
         try{
             String Date1 = "18/04/2022";
             String Date2 = "20/04/2022";
@@ -220,17 +221,17 @@ public class ControllerHangHoa {
             HangHoa hSS1 = new HangHoaSanhSu(50, "Dĩa", 20000, "Củ Chi", d1);
             HangHoa hSS2 = new HangHoaSanhSu(70, "Muỗng", 10000, "HCM", d8);
             HangHoa hSS3 = new HangHoaSanhSu(150, "Nồi", 11000, "HCM", d7);
-            danhSachHangHoa.themHangHoa(hTP);
-            danhSachHangHoa.themHangHoa(hTP1);
-            danhSachHangHoa.themHangHoa(hTP2);
-            danhSachHangHoa.themHangHoa(hDM);
-            danhSachHangHoa.themHangHoa(hDM1);
-            danhSachHangHoa.themHangHoa(hDM2);
-            danhSachHangHoa.themHangHoa(hDM3);
-            danhSachHangHoa.themHangHoa(hSS);
-            danhSachHangHoa.themHangHoa(hSS1);
-            danhSachHangHoa.themHangHoa(hSS2);
-            danhSachHangHoa.themHangHoa(hSS3);
+            dSHH.themHangHoa(hTP);
+            dSHH.themHangHoa(hTP1);
+            dSHH.themHangHoa(hTP2);
+            dSHH.themHangHoa(hDM);
+            dSHH.themHangHoa(hDM1);
+            dSHH.themHangHoa(hDM2);
+            dSHH.themHangHoa(hDM3);
+            dSHH.themHangHoa(hSS);
+            dSHH.themHangHoa(hSS1);
+            dSHH.themHangHoa(hSS2);
+            dSHH.themHangHoa(hSS3);
 
         }catch (Exception e){
             System.out.println("Data Lỗi");
@@ -238,7 +239,7 @@ public class ControllerHangHoa {
     }
 
     public void menuHangHoa() {
-        this.dataTest();
+        this.data();
         do {
             System.out.println("======================MENU===================");
             System.out.println("=1===============NHẬP HÀNG HOÁ===============");
@@ -262,7 +263,7 @@ public class ControllerHangHoa {
                     break;
                 case 2:
                     System.out.println("===Bạn Đã Chọn Chức Năng Xoá Hàng Hoá===");
-                    danhSachHangHoa.xoaHH();
+                    dSHH.xoaHangHoa();
                     break;
                 case 3:
                     System.out.println("===Bạn Đã Chọn Chức Năng Sửa Hàng Hoá===");
@@ -273,25 +274,22 @@ public class ControllerHangHoa {
                     break;
                 case 4:
                     System.out.println("===Bạn Đã Chọn Chức Năng Thống Kê Hàng Hoá===");
-                    danhSachHangHoa.tongSlHangHoaTungLoai();
+                    dSHH.tongSlHangHoaTungLoai();
                     break;
                 case 5:
                     System.out.println("===Bạn Đã Chọn Chức Năng Sắp Xếp Hàng Hoá===");
-                    danhSachHangHoa.sapXepHangHoa();
+                    dSHH.sapXepHangHoa();
                     break;
                 case 6:
                     System.out.println("===Bạn Đã Chọn Chức Năng Hiển Thị Hàng Hoá===");
-                    danhSachHangHoa.hienThiHangHoa();
+                    dSHH.hienThiHangHoa();
                     break;
                 case 7:
                     System.out.println("Nhập Mã Muốn Tìm: ");
                     int maTK = sc.nextInt();
                     sc.nextLine();
-                    danhSachHangHoa.timHangHoaTheoMa(maTK);
+                    dSHH.timHangHoaTheoMa(maTK);
                     break;
-                case 8:
-                    danhSachHangHoa.showHangHoa();
-                break;
                 default:
                     System.out.println("Lựa Chọn Không Hợp Lệ!!!");
                     break;
