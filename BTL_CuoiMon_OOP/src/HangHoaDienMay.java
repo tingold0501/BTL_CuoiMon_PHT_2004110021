@@ -45,10 +45,8 @@ public class HangHoaDienMay extends HangHoa{
     }
     @Override
     public String toString() {
-        return super.toString()+"================Thông Tin Hàng Hoá Điện Máy\n" + "Thời Gian Bảo Hành = " + this.getThoiGianBH()+ "Công Xuất = " + this.getCongXuat()+"Thuế VAT Điện Máy = "+ this.VAT();
+        return super.toString()+"================Thông Tin Hàng Hoá Điện Máy\n" 
+        + "Thời Gian Bảo Hành = " + this.getThoiGianBH()+ "Công Xuất = " 
+        + this.getCongXuat()+"Thuế VAT Điện Máy = "+ this.VAT();
     }
-   
-   
-  
- 
 }

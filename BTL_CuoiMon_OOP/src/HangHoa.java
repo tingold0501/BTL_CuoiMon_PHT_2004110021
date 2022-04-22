@@ -8,7 +8,7 @@ public abstract class HangHoa implements Serializable{
     public HangHoa(){
         
     }
-    public abstract double VAT(); // Xử Lý Interface cho 3 lớp con
+    public abstract double VAT(); 
     public int getMaH() {
         return maH;
     }

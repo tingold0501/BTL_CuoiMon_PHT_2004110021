@@ -8,7 +8,6 @@ import java.util.Scanner;
 
 public class DanhSachHangHoa implements InterfaceHangHoa {
     private List<HangHoa> lHoas = new ArrayList<>();
-    private DuLieuHangHoaFile dFile = new DuLieuHangHoaFile();
     private static int sLHHDienMay,sLHHSanhSu,sLHHThucPham;
     private int sumDM, sumSS, sumTP, sum;
     public Scanner sc = new Scanner(System.in);
@@ -69,6 +68,7 @@ public class DanhSachHangHoa implements InterfaceHangHoa {
         }
         
     }
+   
     private void tinhSLHangHoaTungLoai() {
         for (HangHoa hangHoa : lHoas) {
             if (hangHoa instanceof HangHoaThucPham) {
@@ -115,7 +115,6 @@ public class DanhSachHangHoa implements InterfaceHangHoa {
     @Override
     public void hienThiHangHoa() {
         for (HangHoa hangHoa : lHoas) {
-                    dFile.read();
                     System.out.println(hangHoa);
                     System.out.println();
                 }
@@ -137,7 +136,17 @@ public class DanhSachHangHoa implements InterfaceHangHoa {
     }   
     public void themHangHoa(HangHoa hangHoa) {
         lHoas.add(hangHoa);
-        dFile.write(lHoas);
-
     }
+    public void nhapNhieu(){
+        ControllerHangHoa cHoa = new ControllerHangHoa();
+        String nhapTiep= null;
+        do{
+            HangHoa hangHoa = cHoa.nhapHangHoa();
+            this.themHangHoa(hangHoa);
+            System.out.println("Nhập Tiếp Không [Y/N]");
+            nhapTiep = cHoa.sc.nextLine();
+        }while(nhapTiep.equals("Y") && nhapTiep.equals("y"));
+    }
+   
+    
 }
